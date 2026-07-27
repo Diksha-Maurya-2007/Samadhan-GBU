@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Samadhan | Gautam Buddha University</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="identity">
+      <img src="gbu-logo-transparent.png" alt="Official Gautam Buddha University seal" class="logo-img">
+      <div>
+        <b>Samadhan — Gautam Buddha University</b>
+        <small>Grievance Management &amp; Ticket Tracking</small>
+      </div>
+    </div>
+    <div class="top-actions">
+      <div class="portal-nav hidden" id="portalNav">
+        <button class="navbtn" data-view="admin" data-admin-filter="active">Active Grievances</button>
+        <button class="navbtn" data-view="admin" data-admin-filter="resolved">Resolved Grievances</button>
+        <button class="navbtn" data-view="admin">Admin Dashboard</button>
+      </div>
+      <button class="outline-btn hidden" id="studentTrack"><i class="fa-solid fa-magnifying-glass"></i> Track Status</button>
+      <button class="icon-btn" id="theme" aria-label="Toggle dark mode">
+        <i class="fa-solid fa-moon"></i>
+      </button>
+      <button class="outline-btn hidden" id="signOut">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i> Sign out
+      </button>
+    </div>
+  </header>
+
+  <button class="back-home hidden" id="backToWelcome"><i class="fa-solid fa-arrow-left"></i> Back</button>
+
+  <section class="welcome" id="landing">
+    <div class="welcome-inner">
+      <div class="intro">
+        <div class="eyebrow">A clearer path to resolution</div>
+        <h1>Welcome to Samadhan.</h1>
+        <p>A secure platform for students to register grievances, track complaint status, and receive timely updates until every concern is resolved.</p>
+      </div>
+      <div class="roles">
+        <button class="role" id="chooseStudent">
+          <div class="role-icon">
+            <i class="fa-solid fa-user-graduate"></i>
+          </div>
+          <h2>Student Portal</h2>
+          <p>Create your profile or sign in, submit a grievance, and follow every update with your ticket ID.</p>
+          <span>Continue as Student <i class="fa-solid fa-arrow-right"></i></span>
+        </button>
+        <button class="role admin" id="chooseAdmin">
+          <div class="role-icon">
+            <i class="fa-solid fa-user-shield"></i>
+          </div>
+          <h2>Administrator Portal</h2>
+          <p>Review complaints, prioritize urgent cases, and update resolution status from one dashboard.</p>
+          <span>Continue as Admin <i class="fa-solid fa-arrow-right"></i></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <main class="shell hidden" id="application">
+    <section id="studentAuth" class="auth content-view">
+      <div class="auth-head">
+        <div class="eyebrow">Student access</div>
+        <h1>Start with your student profile</h1>
+        <p class="sub">Your profile details will be securely carried into the grievance form, saving you time.</p>
+      </div>
+      <div class="card">
+        <div class="tabs">
+          <button class="tab active" data-auth="signup">Create account</button>
+          <button class="tab" data-auth="login">Student login</button>
+        </div>
+        <form id="signupForm">
+          <div class="form-grid">
+            <div class="field">
+              <label>Full Name</label>
+              <input id="suName" required placeholder="Your full name">
+            </div>
+            <div class="field">
+              <label>University Email ID</label>
+              <input id="suEmail" required type="email" placeholder="student@gbu.ac.in">
+            </div>
+            <div class="field">
+              <label>Roll Number</label>
+              <input id="suRoll" required inputmode="numeric" pattern="[0-9]{9}" placeholder="123456789" title="Enter your 9-digit roll number">
+            </div>
+            <div class="field">
+              <label>Password</label>
+              <input id="suPass" required type="password" minlength="4" placeholder="Create a password">
+            </div>
+            <div class="field">
+              <label>Department</label>
+              <input id="suDepartment" required placeholder="e.g. Civil Engineering">
+            </div>
+            <div class="field">
+              <label>Course</label>
+              <input id="suCourse" required placeholder="e.g. B.Tech">
+            </div>
+            <div class="field">
+              <label>Year</label>
+              <select id="suYear" required>
+                <option value="">Select year</option>
+                <option>1st Year</option>
+                <option>2nd Year</option>
+                <option>3rd Year</option>
+                <option>4th Year</option>
+                <option>5th Year</option>
+                <option>Postgraduate</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Branch / Specialization</label>
+              <input id="suBranch" required placeholder="e.g. Computer Science">
+            </div>
+          </div>
+          <div class="form-footer">
+            <span class="note"><i class="fa-solid fa-lock"></i> Your profile is stored locally for this prototype.</span>
+            <button class="primary-btn">Create account <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </form>
+        <form id="studentLoginForm" class="hidden">
+          <div class="form-grid">
+            <div class="field">
+              <label>University Email ID</label>
+              <input id="liEmail" type="email" required placeholder="student@gbu.ac.in">
+            </div>
+            <div class="field">
+              <label>Password</label>
+              <input id="liPass" type="password" required placeholder="Your password">
+            </div>
+          </div>
+          <div class="form-footer">
+            <span class="note">Use the profile you created on this browser.</span>
+            <button class="primary-btn">Sign in <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section id="submit" class="content-view">
+      <div class="hero">
+        <div>
+          <div class="eyebrow">Student grievance desk</div>
+          <h1>Every concern deserves a thoughtful response.</h1>
+          <p>We have pre-filled your profile. Please add the details specific to your concern so the right team can assist you.</p>
+        </div>
+        <aside class="promise">
+          <h3>Samadhan commitment</h3>
+          <p><i class="fa-solid fa-clock"></i> Track progress from submission to resolution</p>
+          <p><i class="fa-solid fa-shield-heart"></i> Sensitive cases receive priority handling</p>
+          <p><i class="fa-solid fa-building-columns"></i> Receive timely updates on your complaint</p>
+        </aside>
+      </div>
+      <div class="card" id="grievanceCard">
+        <h2 class="form-title">Raise a grievance</h2>
+        <p class="sub">Your registered information is available below. Complete the grievance-specific fields.</p>
+        <form id="grievanceForm">
+          <div class="form-grid">
+            <div class="field"><label>Full Name</label><input id="gName" readonly></div>
+            <div class="field"><label>University Email ID</label><input id="gEmail" readonly></div>
+            <div class="field"><label>Roll Number</label><input id="gRoll" readonly></div>
+            <div class="field"><label>Department</label><input id="gDepartment" readonly></div>
+            <div class="field"><label>Course</label><input id="gCourse" readonly></div>
+            <div class="field"><label>Year</label><input id="gYear" readonly></div>
+            <div class="field"><label>Branch / Specialization</label><input id="gBranch" readonly></div>
+            <div class="field">
+              <label>Category</label>
+              <select id="gCategory" required>
+                <option value="">Select category</option>
+                <option>Hostel</option>
+                <option>Academics</option>
+                <option>Faculty</option>
+                <option value="Ragging">Ragging ⚠ Emergency</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Priority</label>
+              <div class="priority">
+                <button class="low selected" type="button" data-priority="Low">● Low</button>
+                <button class="medium" type="button" data-priority="Medium">● Medium</button>
+                <button class="high" type="button" data-priority="High"><i class="fa-solid fa-triangle-exclamation"></i> High / Emergency</button>
+              </div>
+            </div>
+            <div class="field full">
+              <label>Description <span class="required-mark">*</span></label>
+              <textarea id="gDescription" required maxlength="1000" placeholder="Describe what happened, including relevant dates, locations, or persons involved..."></textarea>
+              <div class="counter" id="characterCounter">0 / 1000 characters used</div>
+            </div>
+          </div>
+          <div class="form-footer">
+            <span class="note"><i class="fa-solid fa-lock"></i> Your grievance will be handled confidentially.</span>
+            <button type="submit" class="primary-btn">Submit grievance <i class="fa-solid fa-paper-plane"></i></button>
+          </div>
+        </form>
+      </div>
+      <div class="card receipt" id="receipt"></div>
+    </section>
+
+    <section id="track" class="content-view">
+      <div class="track">
+        <div class="eyebrow">Live ticket tracking</div>
+        <div class="page-head">
+          <h1>Track your grievance</h1>
+          <p class="sub">Enter your ticket number to view its latest status and resolution progress.</p>
+        </div>
+        <div class="search">
+          <input id="searchTicket" placeholder="e.g. #GBU-2026-A4K2">
+          <button class="primary-btn" id="trackButton"><i class="fa-solid fa-magnifying-glass"></i> Track status</button>
+        </div>
+        <div class="card result" id="ticketResult"></div>
+      </div>
+    </section>
+
+    <section id="admin" class="content-view">
+      <div id="adminGate" class="card admin-lock">
+        <i class="fa-solid fa-lock"></i>
+        <h2>Administrator access required</h2>
+        <p class="sub">Please sign in with an authorized Samadhan administrator account.</p>
+        <button class="primary-btn" id="adminLoginPrompt">Admin login</button>
+      </div>
+      <div id="dashboard" class="hidden">
+        <div class="dash-head">
+          <div>
+            <div class="eyebrow">Operations center</div>
+            <h1>Grievance dashboard</h1>
+          </div>
+          <button class="outline-btn" id="adminLogout">Sign out of admin panel</button>
+        </div>
+        <div class="stats" id="stats"></div>
+        <div class="card filters">
+          <input id="filterSearch" placeholder="Search ticket, student or roll number">
+          <select id="filterCategory">
+            <option value="">All categories</option>
+            <option>Hostel</option>
+            <option>Academics</option>
+            <option>Faculty</option>
+            <option>Ragging</option>
+            <option>Other</option>
+          </select>
+          <select id="filterStatus">
+            <option value="">All statuses</option>
+            <option>Pending</option>
+            <option>In Progress</option>
+            <option>Resolved</option>
+          </select>
+          <select id="filterPriority">
+            <option value="">All priorities</option>
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+          </select>
+        </div>
+        <div class="card table-card">
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Ticket & student</th>
+                  <th>Category</th>
+                  <th>Priority</th>
+                  <th>Submitted</th>
+                  <th>Status</th>
+                  <th>Update</th>
+                </tr>
+              </thead>
+              <tbody id="ticketRows"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <button class="chat-fab hidden" id="chatFab" aria-label="Open Samadhan assist">
+    <i class="fa-solid fa-comment-dots"></i>
+  </button>
+  <div class="chat" id="chat">
+    <div class="chat-head">
+      <b><i class="fa-solid fa-sparkles"></i> Samadhan Assist</b>
+      <br>
+      <small>Quick answers for GBU students</small>
+    </div>
+    <div class="chat-body">
+      <div class="bot" id="botText">Hello! What would you like to know?</div>
+      <button class="faq" data-answer="After submitting a grievance, use the Track Status tab and enter the ticket ID shown in your receipt.">How do I track my ticket?</button>
+      <button class="faq" data-answer="For immediate safety concerns, choose Ragging as the category. It will be marked High Priority automatically. GBU Anti-Ragging Cell: 0120-2346177.">Ragging help</button>
+      <button class="faq" data-answer="Your grievance is handled by the assigned team first. If it remains unresolved after 7 working days, Track Status will display Grievance Coordinator assistance. Higher Authorities assistance becomes available after 10 working days.">How does escalation work?</button>
+    </div>
+  </div>
+
+  <div class="toastbox" id="toastbox"></div>
+
+  <div class="hidden modal-backdrop" id="adminModal">
+    <div class="card admin-modal-card">
+      <button id="closeAdminModal" class="admin-modal-close">×</button>
+      <h2 class="form-title">Administrator login</h2>
+      <p class="sub">Demo account: <b>admin</b> / <b>admin123</b></p>
+      <form id="adminLoginForm">
+        <div class="field field-spaced">
+          <label>Username</label>
+          <input id="adminUser" value="admin" required>
+        </div>
+        <div class="field">
+          <label>Password</label>
+          <input id="adminPass" type="password" value="admin123" required>
+        </div>
+        <button class="primary-btn modal-submit">Unlock dashboard</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
